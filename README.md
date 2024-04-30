@@ -29,7 +29,6 @@ Start server
   node server.js
 ```
 
-
 Requests sent to localhost:3000 will respond with the following json:
 
 ```json
