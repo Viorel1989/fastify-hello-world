@@ -3,7 +3,6 @@
 
 
 
-
 ## Run locally
 
 Clone the project
@@ -37,6 +36,14 @@ Requests sent to localhost:3000 will respond with the following json:
 {
   "hello": "world"
 }
+```
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  npm test
 ```
 
 
