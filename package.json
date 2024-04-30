@@ -12,7 +12,13 @@
     "fastify": "^4.26.2"
   },
   "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
     "pino-pretty": "^11.0.0",
     "tap": "^18.7.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
