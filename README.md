@@ -1,7 +1,4 @@
-
 # Simple REST API based on Fastify framework.
-
-
 
 ## Run locally
 
@@ -26,7 +23,7 @@ Run npm install to install required depdendencies
 Start server
 
 ```bash
-  node server.js
+  npm start
 ```
 
 Requests sent to localhost:3000 will respond with the following json:
@@ -42,9 +39,20 @@ Requests sent to localhost:3000 will respond with the following json:
 To run tests, run the following command
 
 ```bash
-  npm test
+  npm run test:unit
 ```
 
+## Install pre-commit hooks
+
+Before you start, make sure you have the following installed on your machine:
+
+- [Python](https://www.python.org/downloads/) (to use pip)
+
+```bash
+  pip install pre-commit
+  pre-commit install
+  # pre-commit install --hook-type commit-msg
+```
 
 ## Optimizations
 
