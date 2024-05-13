@@ -50,11 +50,14 @@ Before you start, make sure you have the following installed on your machine:
 
 ```bash
   pip install pre-commit
-  pre-commit install
-  # pre-commit install --hook-type commit-msg
+  pre-commit install --hook-type commit-msg
 ```
 
 ## Optimizations
 
 - Installed Commitizen as pre-commit hook
 - Added editorconfig file for formatting consistentcy
+
+## Acknowledgements
+
+ - [Commitizen tool](https://commitizen-tools.github.io/commitizen/)
