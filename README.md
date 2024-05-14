@@ -55,9 +55,13 @@ Before you start, make sure you have the following installed on your machine:
 
 ## Optimizations
 
-- Installed Commitizen as pre-commit hook
-- Added editorconfig file for formatting consistentcy
+- Installed Commitizen as pre-commit hook to ensure Semantic Versioning and Conventional Commits specifications
+- Added editorconfig, prettier and eslint for formatting consistentcy
+  - (VS Code only) Install VS Code extensions: [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), [Prettier ESLint](https://marketplace.visualstudio.com/items?itemName=rvest.vs-code-prettier-eslint) and [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig).
 
 ## Acknowledgements
 
- - [Commitizen tool](https://commitizen-tools.github.io/commitizen/)
+- [Semantic Versioning](https://semver.org/)
+- [Commitizen tool](https://commitizen-tools.github.io/commitizen/)
+- [Conventional commit standard](https://www.conventionalcommits.org/)
+- [Pre-commit documentation](https://pre-commit.com/)

@@ -3,9 +3,6 @@
 const server = require('./app')({
   logger: {
     level: 'info',
-    transport: {
-      target: 'pino-pretty',
-    },
   },
 })
 
