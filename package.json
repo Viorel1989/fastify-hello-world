@@ -1,13 +1,13 @@
 {
   "name": "fastify-hello-world",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Simple REST API based on Fastify framework",
+  "main": "src/app.js",
   "scripts": {
     "start": "node src/server.js",
     "test:unit": "tap test/*.test.js"
   },
-  "author": "",
+  "author": "Viorel",
   "license": "ISC",
   "dependencies": {
     "fastify": "^4.26.2"
