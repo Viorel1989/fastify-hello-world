@@ -50,3 +50,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Print Version
         run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
+      - name: Check commits format
+        run: cz check
