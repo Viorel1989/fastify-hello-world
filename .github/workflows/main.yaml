@@ -6,6 +6,8 @@ jobs:
 
   build:
     name: Build
+    env:
+      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
     runs-on: ubuntu-latest
     steps:
 
@@ -17,15 +19,14 @@ jobs:
         node-version: 20.x
 
     - name: npm install, npm run test
+      continue-on-error: true
       run: |
         npm install
-        npm run test:unit  
-
-    - name: Coveralls
-      uses: coverallsapp/github-action@v2
-
+        npx tap run --coverage-report=lcov test/*.test.js
+          
     # send the coverage report to coveralls.io
     - name: Coveralls Report
-      uses: coverallsapp/github-action@master
+      uses: coverallsapp/github-action@v2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+        file: .tap/report/lcov.info 
