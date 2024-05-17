@@ -42,18 +42,8 @@ jobs:
         with:
           fetch-depth: 0
           token: '${{ secrets.GITHUB_TOKEN }}'
-      - name: Run commitizen check
-        run: npx commitizen cz check --rev-range ${{ github.event.pull_request.base.sha }}..${{ github.sha }} --commit-filter HEAD
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - id: cz
         name: Create bump and changelog
         uses: commitizen-tools/commitizen-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          dry_run: true
-          check_commit_message: true
-          rev_range: "${{ github.event.pull_request.base.sha }}..${{ github.sha }}"
-          commit_filter: HEAD
-      - name: Print Version
-        run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
+      - name: Run cz check
+        run: cz check
