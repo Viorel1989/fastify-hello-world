@@ -13,7 +13,7 @@ jobs:
       COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
 
     - name: Use Node.js 20.x
       uses: actions/setup-node@v3
@@ -32,7 +32,18 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         file: .tap/report/lcov.info 
-
+        
+   # run commitizen check
+    - name: Commitizen check
+      uses: actions/checkout@v3
+      with: 
+        fetch-depth: 0
+    - name: Run commitizen check
+      run: npx commitizen cz-check --rev-range ${{ github.event.pull_request.base.sha }}..${{ github.sha }} --commit-filter HEAD
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+   
   bump_version:
     if: "!startsWith(github.event.head_commit.message, 'bump:')"
     runs-on: ubuntu-latest
