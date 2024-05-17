@@ -45,7 +45,7 @@ jobs:
       - name: Run commitizen check
         run: |
           pip install --user -U Commitizen
-          cz check --rev-range ${{ github.event.pull_request.base.sha }}..${{ github.sha }} --commit-filter HEAD
+          cz check --rev-range main..HEAD
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - id: cz
