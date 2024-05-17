@@ -44,7 +44,7 @@ jobs:
           token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Run commitizen check
         run: |
-          pip install --user -U Commitize
+          pip install --user -U Commitizen
           cz check --rev-range ${{ github.event.pull_request.base.sha }}..${{ github.sha }} --commit-filter HEAD
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
