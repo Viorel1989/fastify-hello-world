@@ -45,7 +45,7 @@ jobs:
       - name: Run commitizen check
         run: |
           pip install --user -U Commitizen
-          cz check --rev-range main..HEAD
+          cz check --rev-range main..coveralls
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - id: cz
