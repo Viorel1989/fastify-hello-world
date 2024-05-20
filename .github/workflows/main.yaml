@@ -53,7 +53,7 @@ jobs:
      name: 'Snyk security scan'
      runs-on: ubuntu-latest
      steps:
-       - uses: actions/checkout@master
+       - uses: actions/checkout@v4
        - name: Run Snyk to check for vulnerabilities
          continue-on-error: true
          uses: snyk/actions/node@master
