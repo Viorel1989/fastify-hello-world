@@ -1,4 +1,4 @@
-name: Coveralls GitHub Action
+name: Main
 
 on:
   pull_request:
@@ -6,11 +6,12 @@ on:
       - main
 
 jobs:
-  build:
-    name: Build
+  test:
+    name: Run test
     env:
       COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -19,7 +20,7 @@ jobs:
         with:
           node-version: 20.x
 
-      - name: Run npm install, npm run test
+      - name: Install dependencies and run tests
         continue-on-error: true
         run: |
           npm install
@@ -32,26 +33,18 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           file: .tap/report/lcov.info
 
-  bump_version:
-    if: "!startsWith(github.event.head_commit.message, 'bump:')"
+  check:
+    name: 'Check commits'
     runs-on: ubuntu-latest
-    name: "Bump version and create changelog with commitizen"
+
     steps:
       - name: Check out
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: "${{ secrets.GITHUB_TOKEN }}"
-      - name: Run commitizen check
+          token: '${{ secrets.GITHUB_TOKEN }}'
+
+      - name: Install comitizen tool and commitizen check
         run: |
           pip install --user -U Commitizen
           cz check --rev-range origin/main..origin/${{ github.head_ref }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - id: cz
-        name: Create bump and changelog
-        uses: commitizen-tools/commitizen-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Print Version
-        run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
