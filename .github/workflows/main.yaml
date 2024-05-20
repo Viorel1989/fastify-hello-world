@@ -48,3 +48,20 @@ jobs:
         run: |
           pip install --user -U Commitizen
           cz check --rev-range origin/main..origin/${{ github.head_ref }}
+
+    security:
+      name: 'Snyk security scan'
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@master
+        - name: Run Snyk to check for vulnerabilities
+          uses: snyk/actions/node@master
+          ontinue-on-error: true
+          env:
+            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          with:
+            args: --sarif-file-output=snyk.sarif
+        - name: Upload result to GitHub Code Scanning
+          uses: github/codeql-action/upload-sarif@v2
+          with:
+            sarif_file: snyk.sarif
