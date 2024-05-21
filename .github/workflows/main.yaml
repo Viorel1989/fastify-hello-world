@@ -77,4 +77,4 @@ jobs:
           sarif_file: snyk.sarif
           
       - name: Print Upload Output
-        run: echo {{ steps.Upload-sarif.sarif-id }}
+        run: echo {{ steps.Upload-sarif.outputs }}
