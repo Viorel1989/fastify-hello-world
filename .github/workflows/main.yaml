@@ -62,23 +62,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run Snyk to check for vulnerabilities
-        continue-on-error: true
-        uses: snyk/actions/node@master
+      - name: Set up Snyk CLI to check for security issues
+        # Snyk can be used to break the build when it detects security issues.
+        # In this case we want to upload the SAST issues to GitHub Code Scanning
+        uses: snyk/actions/setup@806182742461562b67788a64410098c9d9b96adb
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          args: --sarif-file-output=snyk.sarif --json
-
-      - name: List files in the workspace (debugging)
-        run: ls -R
+          
+      - name: Snyk Code test
+        run: snyk code test --sarif > snyk-code.sarif # || true
 
       - name: Upload result to GitHub Code Scanning
         id: Upload-sarif
         uses: github/codeql-action/upload-sarif@v3
         with:
           wait-for-processing: true
-          sarif_file: snyk.sarif
-          
-      - name: Print Upload Output
-        run: echo {{ steps.Upload-sarif.outputs.sarif-id }}
+          sarif_file: snyk-code.sarif
+
