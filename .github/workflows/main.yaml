@@ -71,7 +71,10 @@ jobs:
         run: ls -R
 
       - name: Upload result to GitHub Code Scanning
+        id: Upload-sarif
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: snyk.sarif
-          token: '{{ vars.FASTIFY_PAT }}'
+          
+      - name: Print Upload Output
+        run: echo {{ steps.Upload-sarif.sarif-id }}
