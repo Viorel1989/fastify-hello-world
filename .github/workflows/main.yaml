@@ -27,13 +27,14 @@ jobs:
         run: npm run lint
 
       - name: Run tests
-        continue-on-error: true
         run: npx tap run --coverage-report=lcov test/*.test.js
 
       # send the coverage report to coveralls.io
       - name: Coveralls Report
         uses: coverallsapp/github-action@v2
         with:
+          allow-empty: true
+          fail-on-error: false
           github-token: ${{ secrets.GITHUB_TOKEN }}
           file: .tap/report/lcov.info
 
