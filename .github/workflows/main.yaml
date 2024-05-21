@@ -74,7 +74,8 @@ jobs:
         id: Upload-sarif
         uses: github/codeql-action/upload-sarif@v3
         with:
+          wait-for-processing: true
           sarif_file: snyk.sarif
           
       - name: Print Upload Output
-        run: echo {{ steps.Upload-sarif.outputs }}
+        run: echo {{ steps.Upload-sarif.outputs.sarif-id }}
