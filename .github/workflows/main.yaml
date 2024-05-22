@@ -55,9 +55,10 @@ jobs:
           cz check --rev-range origin/main..origin/${{ github.head_ref }}
 
   security:
+    name: 'Run snyk security check'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v4
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
         continue-on-error: true # To make sure that SARIF upload gets called
@@ -66,11 +67,12 @@ jobs:
         with:
           args: --sarif-file-output=snyk.sarif
       - name: Upload result to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: snyk.sarif
           
   release-please:
+    name: 'Autorelease'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -85,3 +87,16 @@ jobs:
           # this is a built-in strategy in release-please, see "Action Inputs"
           # for more options
           release-type: simple
+
+  check-signed-commits:
+    name: 'Check commits signature'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Check signed commits in PR
+        uses: 1Password/check-signed-commits-action@v1
+        with:
+          comment: |
+            All commits must be signed before merging PR
