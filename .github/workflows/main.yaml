@@ -84,4 +84,4 @@ jobs:
           token: ${{ secrets.release_please_token}}
           # this is a built-in strategy in release-please, see "Action Inputs"
           # for more options
-          release-type: simpl
+          release-type: simple
