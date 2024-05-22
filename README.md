@@ -1,5 +1,6 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/Viorel1989/fastify-hello-world/badge.svg)](https://snyk.io/test/github/Viorel1989/fastify-hello-world)
 [![Coverage Status](https://coveralls.io/repos/Viorel1989/fastify-hello-world/badge.svg)](https://coveralls.io/github/Viorel1989/fastify-hello-world)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 # Simple REST API based on Fastify framework.
 
