@@ -1,4 +1,5 @@
-[![Known Vulnerabilities](https://snyk.io/test/github/Viorel1989/fastify-hello-world/badge.svg)
+![Known Vulnerabilities](https://snyk.io/test/github/Viorel1989/fastify-hello-world/badge.svg)
+![Coverage Status](https://coveralls.io/repos/Viorel1989/fastify-hello-world/badge.svg)]
 
 # Simple REST API based on Fastify framework.
 
