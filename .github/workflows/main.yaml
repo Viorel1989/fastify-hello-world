@@ -101,4 +101,4 @@ jobs:
       - uses: googleapis/release-please-action@v4
         with:
           token: ${{ secrets.release_please_token}}
-          release-type: simple
+          release-type: node
