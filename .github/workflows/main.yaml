@@ -62,6 +62,8 @@ jobs:
   security:
     name: 'Run snyk security check'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - name: Run Snyk to check for vulnerabilities
@@ -92,7 +94,7 @@ jobs:
   release-please:
     name: 'Autorelease'
     runs-on: ubuntu-latest
-    needs: [test, check, security, check-signed-commits]
+    needs: [test, security]
     if: ${{ !failure() && github.event_name == 'push'}}
     permissions:
       contents: write
