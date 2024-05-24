@@ -57,7 +57,7 @@ jobs:
       - name: Install comitizen tool and commitizen check
         run: |
           pip install --user -U Commitizen
-          cz check --rev-range origin/main..HEAD
+          cz check --rev-range origin/main...HEAD
 
   security:
     name: 'Run snyk security check'
