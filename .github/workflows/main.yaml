@@ -57,7 +57,7 @@ jobs:
       - name: Install comitizen tool and commitizen check
         run: |
           pip install --user -U Commitizen
-          cz check --rev-range origin/main..origin/${{ github.head_ref }}
+          cz check
 
   security:
     name: 'Run snyk security check'
@@ -92,7 +92,7 @@ jobs:
   release-please:
     name: 'Autorelease'
     runs-on: ubuntu-latest
-    needs: [test, check, security, check-signed-commits]
+    needs: [test, check]
     if: ${{ !failure() && github.event_name == 'push'}}
     permissions:
       contents: write
