@@ -102,7 +102,7 @@ jobs:
             All commits must be signed before merging PR
 
   release-please:
-    name: 'Autorelease'
+    name: 'Release action'
     runs-on: ubuntu-latest
 
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
