@@ -11,11 +11,13 @@ on:
       - main
 
 jobs:
-  test:
+  tests:
     name: Run tests and lint
     env:
       COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
     runs-on: ubuntu-latest
+
+    if: github.event_name == 'pull_request'
 
     steps:
       - uses: actions/checkout@v4
@@ -43,9 +45,11 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           file: .tap/report/lcov.info
 
-  check:
+  commitizen-check:
     name: 'Check commits'
     runs-on: ubuntu-latest
+
+    if: github.event_name == 'pull_request'
 
     steps:
       - name: Check out
@@ -62,6 +66,9 @@ jobs:
   security:
     name: 'Run snyk security check'
     runs-on: ubuntu-latest
+
+    if: github.event_name == 'pull_request'
+
     steps:
       - uses: actions/checkout@v4
       - name: Run Snyk to check for vulnerabilities
@@ -92,8 +99,9 @@ jobs:
   release-please:
     name: 'Autorelease'
     runs-on: ubuntu-latest
-    needs: [test, check, security, check-signed-commits]
-    if: ${{ !failure() && github.event_name == 'push'}}
+
+    if: $github.event_name == 'push' && github.ref == 'refs/heads/main'
+
     permissions:
       contents: write
       pull-requests: write
