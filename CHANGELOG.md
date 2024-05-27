@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/Viorel1989/fastify-hello-world/compare/v1.0.0...v1.1.0) (2024-05-27)
+
+
+### Features
+
+* **release:** add release action ([7c8610c](https://github.com/Viorel1989/fastify-hello-world/commit/7c8610ce93011b0910e8826f88f64b97c741dd72))
+
 ## 1.0.0 (2024-05-22)
 
 
