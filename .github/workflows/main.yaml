@@ -101,8 +101,9 @@ jobs:
   release-please:
     name: 'Autorelease'
     runs-on: ubuntu-latest
-    needs: [test, check, security, check-signed-commits]
-    if: ${{ !failure() && github.event_name == 'push'}}
+
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
     permissions:
       contents: write
       pull-requests: write
