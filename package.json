@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fastify": "^4.26.2"
+    "fastify": "^4.27.0"
   },
   "devDependencies": {
     "eslint": "^8.52.0",
