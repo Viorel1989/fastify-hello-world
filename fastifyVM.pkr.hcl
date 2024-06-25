@@ -13,17 +13,17 @@ source "azure-arm" "FastifyVM" {
     dept = "Development"
     task = "Image deployment"
   }
-  client_id                         = "your_default_client_id"
-  client_secret                     = "your_default_client_secret"
+  client_id                         = "00000000-0000-0000-0000-000000000000"
+  client_secret                     = "00000000-0000-0000-0000-000000000000"
   image_offer                       = "0001-com-ubuntu-server-jammy"
   image_publisher                   = "canonical"
   image_sku                         = "22_04-lts"
   location                          = "westeurope"
   managed_image_name                = "fastifyVM"
-  managed_image_resource_group_name = "fastifyRG"
+  managed_image_resource_group_name = "fastifyResourceGroup"
   os_type                           = "Linux"
-  subscription_id                   = "your_default_subscription_id"
-  tenant_id                         = "your_default_tenant_id"
+  subscription_id                   = "00000000-0000-0000-0000-000000000000"
+  tenant_id                         = "00000000-0000-0000-0000-000000000000"
   vm_size                           = "Standard_B1S"
 }
 
@@ -32,15 +32,25 @@ build {
 
   provisioner "shell" {
     inline = [
+      "sudo mkdir -p /home/fastify-hello-world",
+      "sudo chown -R $USER:$USER /home/fastify-hello-world"
+    ]
+  }
+
+  provisioner "file" {
+    source      = "./"
+    destination = "/home/fastify-hello-world"
+  }
+
+  provisioner "shell" {
+    inline = [
       "sudo apt-get update -y",
       "sudo apt upgrade -y",
       "sudo apt install -y curl",
       "curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash - ",
       "sudo apt-get install -y nodejs",
-      "git clone https://github.com/Viorel1989/fastify-hello-world.git",
-      "cd fastify-hello-world",
-      "npm install",
-      "npm start"
+      "cd /home/fastify-hello-world",
+      "npm install"
     ]
   }
 
