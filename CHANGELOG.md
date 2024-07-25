@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.1](https://github.com/Viorel1989/fastify-hello-world/compare/v1.1.0...v1.1.1) (2024-07-25)
+
+
+### Bug Fixes
+
+* **packer:** update chown for node user after the dependencies are installed ([d2278c6](https://github.com/Viorel1989/fastify-hello-world/commit/d2278c618c7c99d38007f36a866eca03aef19ca5))
+* update gitignore file ([2ce7223](https://github.com/Viorel1989/fastify-hello-world/commit/2ce7223c93e92daeee7266f4bf8c39c2b0ce0732))
+* upgrade fastify from 4.26.2 to 4.27.0 ([93fb171](https://github.com/Viorel1989/fastify-hello-world/commit/93fb171cd0f96edc3aa96efa7f65c7c1656c152a))
+
 ## [1.1.0](https://github.com/Viorel1989/fastify-hello-world/compare/v1.0.0...v1.1.0) (2024-05-27)
 
 
