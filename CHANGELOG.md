@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/Viorel1989/fastify-hello-world/compare/v1.1.1...v1.1.2) (2024-07-26)
+
+
+### Bug Fixes
+
+* change the npm ci install command to run under user node ([f49a304](https://github.com/Viorel1989/fastify-hello-world/commit/f49a30415651bdb5076124187c5df93367f688cd))
+
 ## [1.1.1](https://github.com/Viorel1989/fastify-hello-world/compare/v1.1.0...v1.1.1) (2024-07-25)
 
 
