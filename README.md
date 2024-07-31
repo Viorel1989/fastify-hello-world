@@ -104,7 +104,7 @@ az vm open-port \
 
 curl $(az vm list-ip-addresses --name fastify-hello-world --resource-group fastifyResourceGroup --query "[0].virtualMachine.network.publicIpAddresses[0].ipAddress" | jq -r):3000
 
-az resource delete --ids $(az resource list -g fastify-hello-world --query "[].id" -o tsv)
+az resource delete --ids $(az resource list -g fastifyResourceGroup --query "[].id" -o tsv)
 ```
 
 ## Optimizations
