@@ -6,7 +6,9 @@ const server = require('./app')({
   },
 })
 
-server.listen({ port: 3000, host: '0.0.0.0' }, (err, address) => {
+const port = process.env.port || 3000
+
+server.listen({ port: port, host: '0.0.0.0' }, (err, address) => {
   if (err) {
     server.log.error(err)
     process.exit(1)
